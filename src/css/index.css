@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+header {
+  width: 600px;
+}
+
+.logo {
+  margin: 10px;
+  padding: 10px;
+  background-color: #E4E4E4;
+  border-radius: 5px;
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+}
+
+.logo > span {
+  font-size: 36px;
+}
+.logo > span:nth-child(3) {
+  font-size: 18px;
+}
