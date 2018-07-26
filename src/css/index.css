@@ -1,15 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
   display: flex;
   justify-content: center;
 }
 
+.main-wrapper {
+  width: 900px;
+}
+
 header {
-  width: 600px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -27,4 +34,80 @@ header {
 }
 .logo > span:nth-child(3) {
   font-size: 18px;
+}
+
+/* Pop-List Styles */
+#poplist-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#poplist-wrapper > h3 {
+  text-align: center; 
+}
+
+.pop-entry-item {
+  margin: 10px;
+  padding: 12px 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: #E4E4E4;
+  border-radius: 3px;
+}
+
+.popentry-info, .popentry-personal-info {
+  display: flex;
+  width: 100%;
+}
+
+.popentry-personal-info {
+  margin: 10px;
+  font-size: 14px;
+}
+
+.popentry-timeline {
+  font-size: 14px;
+}
+
+.popentry-item-about {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.popentry-type-badge {
+  margin: 0px 3px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background-color: #333333;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.badge-complete {
+  background: #B3D948;
+  color: #333;
+}
+
+.badge-ongoing {
+  color: #333;
+  background-color: #D97D2C;
+}
+
+.popentry-item-rating {
+  width: 100px;
+  font-size: 12px;
+}
+
+.popentry-viewstatus {
+  margin: 0px 3px;
+  padding: 3px 5px;
+  border: 1px solid #333;
+  border-radius: 3px;
 }
