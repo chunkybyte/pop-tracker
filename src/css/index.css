@@ -134,6 +134,7 @@ header {
   padding: 10px;
   display: flex;
   justify-content: flex-start;
+  align-content: center;
 }
 
 .resultImg {
@@ -151,7 +152,29 @@ header {
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
+  flex: 1;
 }
 .resultInfo > p {
   font-size: 13px;
+}
+.addToMyList {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #6BBF59;
+  border: 1px solid #CCC;
+  border-radius: 6px;
+  outline: none;
+  padding: 10px 15px;
+  margin: 10px;
+  color: #FFFFFF;
+  font-size: 16px;
+  cursor: pointer;
+}
+.plusSymbol {
+  font-weight: 900;
+  font-size: 45px;
 }
