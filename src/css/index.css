@@ -111,3 +111,19 @@ header {
   border: 1px solid #333;
   border-radius: 3px;
 }
+
+#searchBox {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#searchArea {
+  width: 98%;
+  padding: 8px 12px;
+  border: 1px solid #CCC;
+  border-radius: 3px;
+}
+
