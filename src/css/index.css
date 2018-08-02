@@ -127,3 +127,31 @@ header {
   border-radius: 3px;
 }
 
+#searchResult {
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.resultImg {
+  width: 100px;
+}
+
+.resultImg > img {
+  width: 100%;
+  height: auto;
+}
+
+.resultInfo {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+}
+.resultInfo > p {
+  font-size: 13px;
+}
