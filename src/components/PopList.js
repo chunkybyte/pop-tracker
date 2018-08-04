@@ -14,7 +14,7 @@ class PopList extends React.Component {
         fetch("https://demo3657198.mockable.io/getMovieList")
             .then(res => res.json())
             .then(res => {
-                this.setState({ poplist: res.poplist });
+                this.setState({ poplist: res.data });
             })
             .catch(err => {
                 console.error("There was some problem with the list fetching", err);
@@ -26,7 +26,7 @@ class PopList extends React.Component {
         if(!data) {
            return <p>Loading...</p> 
         } else {
-            return data.map((entry, i) => <PopEntry key={`popentry-${i}`} details={entry} />);
+            return data.map((entry, i) => <PopEntry key={entry.imdbID} details={entry} />);
         }
     }
 
