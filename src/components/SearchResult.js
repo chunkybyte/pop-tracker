@@ -1,6 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addPopItem } from '../actions/index';
 
-class SearchResult extends React.Component {
+const mapDispatchToProps = (dispatch) => ({
+    addPopItem: popItem => dispatch(addPopItem(popItem))
+});
+
+class SearchResultWrap extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -9,12 +15,15 @@ class SearchResult extends React.Component {
     }
     
     addToList = (newItem) => {
-        alert('Item Added');
-        console.log('Item Added');
-        console.log(newItem);
-        this.setState({
-            added: !this.state.added
-        });
+        if (!this.state.added) {
+            alert('Item Added');
+            this.props.addPopItem(newItem);
+            this.setState({
+                added: !this.state.added
+            });
+        } else {
+            alert('Item Already exists in your list');
+        }
     }
 
     render() {
@@ -56,5 +65,7 @@ class SearchResult extends React.Component {
         );
     }
 }
+
+const SearchResult = connect(null, mapDispatchToProps)(SearchResultWrap);
 
 export default SearchResult;

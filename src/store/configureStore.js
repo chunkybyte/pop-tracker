@@ -1,10 +1,12 @@
 import { createStore, compose } from 'redux';
-import rootReducer from './reducers/index';
+import rootReducer from '../reducers/index';
 
-import data from './sample/my-list';
+import data from '../sample/my-list';
 
-const defaultState = {
+const initialState = {
     data
 }
 
-const store = createStore(rootReducer, defaultState);
+const store = createStore(rootReducer, initialState);
+
+export default store;
