@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addPopItem } from '../actions/index';
+import AddModal from './AddModal';
 
 const mapDispatchToProps = (dispatch) => ({
     addPopItem: popItem => dispatch(addPopItem(popItem))
@@ -10,19 +11,36 @@ class SearchResultWrap extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            added: false
+            added: false,
+            showPopup: false
         }
     }
     
+    addToListPopup = () => {
+        this.setState({
+            showPopup: !this.state.showPopup
+        })
+    }
+
+    closeModal = () => {
+        this.setState({
+            showPopup: !this.state.showPopup
+        });
+    }
+
     addToList = (newItem) => {
         if (!this.state.added) {
             alert('Item Added');
             this.props.addPopItem(newItem);
             this.setState({
-                added: !this.state.added
+                added: !this.state.added,
+                showPopup: !this.state.showPopup
             });
         } else {
             alert('Item Already exists in your list');
+            this.setState({
+                showPopup: !this.state.showPopup
+            });
         }
     }
 
@@ -55,12 +73,13 @@ class SearchResultWrap extends React.Component {
                         {data.Type === 'series' ? `Seasons : ${data.totalSeasons}` : `Runtime : ${data.Runtime}`}<br/>
                     </p>
                 </div>
-                <button className="addToMyList" style={this.state.added ? {justifyContent:"center"} : {justifyContent:"flex-start"}} onClick={() => { this.addToList(data); }}>
+                <button className="addToMyList" style={this.state.added ? {justifyContent:"center"} : {justifyContent:"flex-start"}} onClick={() => { this.addToListPopup(); }}>
                     {this.state.added ? 
                         <React.Fragment>Added to Your List.</React.Fragment> 
                         : 
                         <React.Fragment><span className="plusSymbol">+</span>Add To My List</React.Fragment>}
                 </button>
+                {this.state.showPopup ? <AddModal details={this.props.details} closeModal={this.closeModal} addToList={this.addToList} /> : ''}
             </div>
         );
     }
