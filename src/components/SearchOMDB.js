@@ -40,7 +40,7 @@ class SearchOMDB extends React.Component {
                 <h3>Search Movies, TV</h3>
                 <input type="text" name="search" id="searchArea" placeholder="Start typing the name of the show, movies, etc you're searching..." onInput={(e) => {this.giveResults(e.target.value)}} />
                 
-                {this.state.searchResult == null ? "" : <SearchResult details={this.state.searchResult} />}
+                {this.state.searchResult == null ? "" : <SearchResult itemId={this.state.searchResult.imdbID} details={this.state.searchResult} />}
             </div>
         );
     }

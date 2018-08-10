@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addPopItem } from '../actions/index';
+import store from '../store/configureStore';
 import AddModal from './AddModal';
 
 const mapDispatchToProps = (dispatch) => ({
@@ -10,13 +11,30 @@ const mapDispatchToProps = (dispatch) => ({
 class SearchResultWrap extends React.Component {
     constructor(props) {
         super(props);
+        const searchKey = this.props.itemId;
+        const itemExists = store.getState().data.find(myItem => myItem.imdbID === searchKey) === undefined ? false : true;  
         this.state = {
-            added: false,
+            added: itemExists,
             showPopup: false
         }
     }
+
+    componentWillReceiveProps(newProps) {
+        this.setState({
+            added: this.checkItemStatus(newProps.itemId)
+        });
+    }
+
+    checkItemStatus (searchKey) {
+        const itemExists = store.getState().data.find(myItem => myItem.imdbID === searchKey) === undefined ? false : true;
+        return itemExists;  
+    }
     
     addToListPopup = () => {
+        if (this.state.added) {
+            alert('Already in your list.');
+            return;
+        }
         this.setState({
             showPopup: !this.state.showPopup
         })
@@ -30,7 +48,6 @@ class SearchResultWrap extends React.Component {
 
     addToList = (newItem) => {
         if (!this.state.added) {
-            alert('Item Added');
             this.props.addPopItem(newItem);
             this.setState({
                 added: !this.state.added,
