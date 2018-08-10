@@ -1,6 +1,20 @@
 import React from 'react';
 
 class AddModal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedProgress: 'incomplete'
+        }
+        this.ratingRef = React.createRef();
+    }
+
+    handleProgressChange = (e) => {
+        this.setState({
+            selectedProgress: e.target.value 
+        });
+    }
+
     render() {
         let data = this.props.details;
 
@@ -16,16 +30,34 @@ class AddModal extends React.Component {
                             <strong>
                                 {data.Title} <i>({data.Year})</i>
                             </strong>
-                            <p>
-                                Starring : {data.Actors} <br/>
-                                Rated : {data.imdbRating === 'N/A' ? "Unrated" : `${data.imdbRating} / 10`} <br/>
-                                Type : <span style={{textTransform:"capitalize"}}>{data.Type}</span> <br/>
-                                Country : {data.Country} <br/>
-                                {data.Type === 'series' ? `Seasons : ${data.totalSeasons}` : `Runtime : ${data.Runtime}`}<br/>
-                            </p>
+                            <div className="addModalBody">
+                                <p>
+                                    Are you watching this or completed?
+                                </p>
+                                <div>
+                                    <input type="radio" value="incomplete" name="itemProgress" 
+                                        checked={this.state.selectedProgress === 'incomplete'} 
+                                        onChange={(e) => {this.handleProgressChange(e)}} />
+                                    <label htmlFor="incomplete">In Progress / Want to watch</label>
+                                </div>
+                                <div>
+                                    <input type="radio" value="complete" name="itemProgress" 
+                                        checked={this.state.selectedProgress === 'complete'} 
+                                        onChange={(e) => {this.handleProgressChange(e)}} />
+                                    <label htmlFor="complete">Completed</label>
+                                </div>
+                                <br/>
+                                <label htmlFor="personalRating">Rate this {data.Type} : </label>
+                                <input ref={this.ratingRef} className="inpField" placeholder="On a scale of 10, how good was it?" type="number" name="personalRating" step="1" min="1" max="10" />
+
+                            </div>
                         </div>
                     </div>
-                    <button className="btn addItemBtn" onClick={() => {this.props.addToList(data)}}>
+                    <button className="btn addItemBtn" onClick={() => {this.props.addToList({
+                        ...data,
+                        "personalRating": this.ratingRef.current.value,
+                        "watchProgress": this.state.selectedProgress
+                        })}}>
                         Add this to My List
                     </button>
                     <button className="btn cancelItemBtn" onClick={this.props.closeModal}>

@@ -41,7 +41,7 @@ class PopListWrap extends React.Component {
         return (
             <div id="poplist-wrapper">
                 <h3>Your Movie List</h3>
-                <div style={{textAlign: 'center'}}>
+                <div id="poplisting">
                     {this.renderListing(this.props.data)}
                 </div>
             </div>

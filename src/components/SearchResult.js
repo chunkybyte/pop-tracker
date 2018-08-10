@@ -48,6 +48,10 @@ class SearchResultWrap extends React.Component {
 
     addToList = (newItem) => {
         if (!this.state.added) {
+            // newItem = {
+            //     ...newItem,
+            //     personalRating
+            // }
             this.props.addPopItem(newItem);
             this.setState({
                 added: !this.state.added,

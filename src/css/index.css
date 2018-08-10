@@ -45,6 +45,15 @@ header {
   flex-direction: column;
 }
 
+#poplisting {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+  text-align: center;
+}
+
 #poplist-wrapper > h3 {
   text-align: center; 
 }
@@ -235,4 +244,18 @@ header {
 
 .cancelItemBtn {
   background-color: #DE262A;
+}
+
+.addModalBody {
+  margin: 5px 0 0 0;
+  width: 100%;
+  font-size: 13px;
+}
+
+.inpField {
+  border-radius: 3px;
+  border: 1px solid #CCC;
+  padding: 3px 5px;
+  width: 220px;
+  font-size: 12px;
 }

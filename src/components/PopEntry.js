@@ -7,7 +7,7 @@ class PopEntry extends React.Component {
     }
 
     render() {
-        const { Title, Type, Year, Rating, Poster, Rated, Country, Genre, imdbRating } = this.props.details;
+        const { Title, Type, Year, personalRating, Poster, Rated, Country, Genre, imdbRating, watchProgress } = this.props.details;
 
         return (
             <div className="pop-entry-item">
@@ -31,16 +31,16 @@ class PopEntry extends React.Component {
                             <strong>IMDB Rating</strong> : {imdbRating === 'N/A' ? 'Unrated' : `${imdbRating} / 10`}<br/>
                         </p>
                         <p className="popentry-item-rating">
-                            Your Rating : {Rating} / 10
+                            Your Rating : {personalRating} / 10
                         </p>
                         <div className="popentry-personal-info">
                             <div>
-                                Status : 
-                                <select className="popentry-viewstatus">
+                                Status : <span style={{textTransform:"capitalize"}}>{watchProgress}</span>
+                                {/* <select className="popentry-viewstatus">
                                     <option value="watching">Watching</option>
                                     <option value="watched">Watched</option>
                                     <option value="following">Following</option>
-                                </select>
+                                </select> */}
                             </div>
                         </div>
                     </div>
